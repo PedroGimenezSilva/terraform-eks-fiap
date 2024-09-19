@@ -34,13 +34,13 @@ jobs:
       # Inicializar o Terraform
       - name: Terraform Init
         run: terraform init
-        working-directory: ../../terraform/cluster-eks
+        working-directory: terraform/cluster-eks
 
       # Executar o Terraform Plan
       - name: Terraform Plan
         id: plan
         run: terraform plan -out=plan.tfplan
-        working-directory: ../../terraform/cluster-eks
+        working-directory: terraform/cluster-eks
 
       # Aplicar as mudanças automaticamente ao fazer push na branch main
       - name: Terraform Apply
