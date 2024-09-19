@@ -24,7 +24,6 @@ jobs:
       # Chamar o outro workflow de configuração AWS
       - name: Call AWS Configuration Workflow
         uses: ./.github/workflows/configure-aws-cli.yaml
-
       # Checkout do repositório
       - name: Checkout repository
         uses: actions/checkout@v3
