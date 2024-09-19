@@ -33,7 +33,7 @@ jobs:
 
       # Inicializar o Terraform
       - name: Terraform Init
-        run: terraform init
+        run: terraform init -upgrade
         working-directory: terraform/cluster-eks
 
       # Executar o Terraform Plan
