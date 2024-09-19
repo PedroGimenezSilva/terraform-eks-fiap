@@ -1,0 +1,42 @@
+name: Terraform Plan and Apply
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main 
+jobs:
+  terraform:
+    name: Terraform Plan and Apply
+    runs-on: ubuntu-latest
+
+    steps:
+      # Chamar o outro workflow de configuração AWS
+      - name: Call AWS Configuration Workflow
+        uses: ./.github/workflows/configure-aws-cli.yaml
+
+      # Checkout do repositório
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Configurar o Terraform CLI
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.7.4
+
+      # Inicializar o Terraform
+      - name: Terraform Init
+        run: terraform init
+
+      # Executar o Terraform Plan
+      - name: Terraform Plan
+        id: plan
+        run: terraform plan -out=plan.tfplan
+
+      # Aplicar as mudanças automaticamente ao fazer push na branch main
+      - name: Terraform Apply
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        run: terraform apply -auto-approve plan.tfplan
