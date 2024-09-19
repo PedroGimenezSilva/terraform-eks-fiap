@@ -1,8 +1,6 @@
 name: AWS Configuration
-
 on: 
-  workflow_call
-
+  workflow_call:
 jobs:
   configure-aws:
     runs-on: ubuntu-latest
