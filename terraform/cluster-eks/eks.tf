@@ -1,6 +1,6 @@
 module "eks" {
   source          = "terraform-aws-modules/eks/aws"
-  cluster_name    = "fiap_tech_challenge"
+  cluster_name    = "fiap_tech_challenge_fase3"
   cluster_version = "1.30"          
   cluster_endpoint_public_access  = true
   enable_cluster_creator_admin_permissions = true
