@@ -13,8 +13,8 @@ module "eks" {
     vpc-cni                = {}
   }
 
-  vpc_id          = "vpc-0c759cb94ff0e2a85"      
-  subnet_ids         = ["subnet-07efb7a15c29f9257", "subnet-00b7572ad3068c914"]
+  vpc_id          = "vpc-0055ade1f9088e0fa"      
+  subnet_ids         = ["subnet-0115b6d08158577bf", "subnet-0754183aca138c7aa"]
    
   
   eks_managed_node_groups = {
