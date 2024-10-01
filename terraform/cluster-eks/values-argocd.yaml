@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: backend
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/PedroGimenezSilva/eks-fiap-tech-challenge.git
+    targetRevision: main
+    path: kubernetes/manifest/application
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: app
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:     
+      - Validate=false 
+      - CreateNamespace=true     
